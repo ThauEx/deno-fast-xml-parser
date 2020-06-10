@@ -1,6 +1,19 @@
 
 
 # [fast-xml-parser](https://www.npmjs.com/package/fast-xml-parser)
+
+This is a fork to add support for deno. The parser got modified to use ESM syntax instead of CommonJS syntax. Currently only the parser got ported, the serialize got deactivated.    
+
+Example:
+```js
+import {parse} from "https://denopkg.com/ThauEx/deno-fast-xml-parser/mod.ts";
+
+const parsed = parse("<test>foo bar</test>");
+console.log(parsed);
+```
+
+### Original README:
+    
 [![Backers on Open Collective](https://opencollective.com/fast-xml-parser/backers/badge.svg)](#backers) [![Sponsors on Open Collective](https://opencollective.com/fast-xml-parser/sponsors/badge.svg)](#sponsors) [![Known Vulnerabilities](https://snyk.io/test/github/naturalintelligence/fast-xml-parser/badge.svg)](https://snyk.io/test/github/naturalintelligence/fast-xml-parser)
 [![NPM quality][quality-image]][quality-url]
 [![Travis ci Build Status](https://travis-ci.org/NaturalIntelligence/fast-xml-parser.svg?branch=master)](https://travis-ci.org/NaturalIntelligence/fast-xml-parser)

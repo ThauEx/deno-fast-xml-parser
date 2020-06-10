@@ -1,6 +1,4 @@
-'use strict';
-
-module.exports = function(tagname, parent, val) {
+export default function xmlNode(tagname, parent, val) {
   this.tagname = tagname;
   this.parent = parent;
   this.child = {}; //child tags
@@ -14,4 +12,4 @@ module.exports = function(tagname, parent, val) {
       this.child[child.tagname] = [child];
     }
   };
-};
+}

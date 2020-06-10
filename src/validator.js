@@ -1,6 +1,4 @@
-'use strict';
-
-const util = require('./util');
+import * as util from './util.js';
 
 const defaultOptions = {
   allowBooleanAttributes: false, //A tag can have attributes without any value
@@ -9,7 +7,7 @@ const defaultOptions = {
 const props = ['allowBooleanAttributes'];
 
 //const tagsPattern = new RegExp("<\\/?([\\w:\\-_\.]+)\\s*\/?>","g");
-exports.validate = function (xmlData, options) {
+export default function validate(xmlData, options) {
   options = util.buildOptions(options, defaultOptions, props);
 
   //xmlData = xmlData.replace(/(\r\n|\n|\r)/gm,"");//make it single line

@@ -1,8 +1,6 @@
-'use strict';
+import * as util from './util.js';
+import xmlNode from './xmlNode.js';
 
-const util = require('./util');
-const buildOptions = require('./util').buildOptions;
-const xmlNode = require('./xmlNode');
 const regx =
   '<((!\\[CDATA\\[([\\s\\S]*?)(]]>))|((NAME:)?(NAME))([^>]*)>|((\\/)(NAME)\\s*>))([^<]*)'
   .replace(/NAME/g, util.nameRegexp);
@@ -18,7 +16,7 @@ if (!Number.parseFloat && window.parseFloat) {
   Number.parseFloat = window.parseFloat;
 }
 
-const defaultOptions = {
+export const defaultOptions = {
   attributeNamePrefix: '@_',
   attrNodeName: false,
   textNodeName: '#text',
@@ -42,9 +40,7 @@ const defaultOptions = {
   //decodeStrict: false,
 };
 
-exports.defaultOptions = defaultOptions;
-
-const props = [
+export const props = [
   'attributeNamePrefix',
   'attrNodeName',
   'textNodeName',
@@ -62,7 +58,6 @@ const props = [
   'parseTrueNumberOnly',
   'stopNodes'
 ];
-exports.props = props;
 
 /**
  * Trim -> valueProcessor -> parse value
@@ -167,9 +162,9 @@ function buildAttributesMap(attrStr, options) {
   }
 }
 
-const getTraversalObj = function(xmlData, options) {
+export function getTraversalObj(xmlData, options) {
   xmlData = xmlData.replace(/(\r\n)|\n/, " ");
-  options = buildOptions(options, defaultOptions, props);
+  options = util.buildOptions(options, defaultOptions, props);
   const xmlObj = new xmlNode('!xml');
   let currentNode = xmlObj;
   let textData = "";
@@ -337,5 +332,3 @@ function findClosingIndex(xmlData, str, i, errMsg){
     return closingIndex + str.length - 1;
   }
 }
-
-exports.getTraversalObj = getTraversalObj;
